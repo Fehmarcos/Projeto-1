@@ -2,11 +2,11 @@ const express = require('express');
 const db = require('../config/db_sequelize');
 const controllerUsuario = require('../controllers/controllerUsuario');
 const route = express.Router();
-/*
+
 db.sequelize.sync({force: true}).then(() => {
     console.log('{ force: true }');
 });
-*/
+/**/
 //db.Usuario.create({login:'admin', senha:'123', tipo:0});
 
 

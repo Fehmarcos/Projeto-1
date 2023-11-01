@@ -16,15 +16,6 @@ module.exports = (sequelize, Sequelize) => {
         },
         observacao: {
             type: Sequelize.STRING, allowNull: true
-        },
-        idcategoria: {
-            type: Sequelize.STRING, allowNull: false
-        },
-        idusuario: {
-            type: Sequelize.INTEGER, allowNull: false
-        },
-        idresponsavel: {
-            type: Sequelize.INTEGER, allowNull: true
         }
     });
     return Ticket;

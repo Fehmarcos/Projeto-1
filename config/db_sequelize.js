@@ -12,6 +12,8 @@ db.Usuario = require('../models/relational/usuario.js')(sequelize, Sequelize);
 db.Categoria = require('../models/relational/categoria.js')(sequelize, Sequelize);
 db.Ticket = require('../models/relational/ticket.js')(sequelize, Sequelize);
 //Relacionamentos
-db.Usuario.hasMany(db.Ticket)
+db.Categoria.hasMany(db.Ticket)
+db.Ticket.hasOne(db.Usuario)
+db.Ticket.hasOne(db.Usuario)
 module.exports = db;
 
