@@ -11,18 +11,21 @@ module.exports = (sequelize, Sequelize) => {
         descricao: {
             type: Sequelize.STRING, allowNull: false
         },
+        status: {
+            type: Sequelize.STRING, allowNull: false
+        },
         observacao: {
             type: Sequelize.STRING, allowNull: true
         },
-        categoriaid: {
+        idcategoria: {
             type: Sequelize.STRING, allowNull: false
         },
-        usuarioid: {
+        idusuario: {
             type: Sequelize.INTEGER, allowNull: false
         },
-        tenicoid: {
+        idresponsavel: {
             type: Sequelize.INTEGER, allowNull: true
         }
     });
-    return Usuario;
+    return Ticket;
 }
