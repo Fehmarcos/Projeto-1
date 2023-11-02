@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
         /* Tipo
             0: Admin
             1: Ténico
-            2: Usuario
+            Padrao: Usuario
         */
         tipo: {
             type: Sequelize.INTEGER, allowNull: false
