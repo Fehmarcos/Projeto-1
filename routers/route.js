@@ -15,10 +15,7 @@ module.exports = route;
 
 //Home
 route.get("/home", function (req, res) {
-  res.render("home", {
-    adm: req.cookies.tipo == 0,
-    tecnico: req.cookies.tipo == 1,
-  });
+  res.render("home");
 });
 
 //Controller Usuario
