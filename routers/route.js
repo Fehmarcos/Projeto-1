@@ -9,7 +9,7 @@ db.sequelize.sync({force: true}).then(() => {
     console.log('{ force: true }');
 });
 */
-//db.Usuario.create({login:'admin', senha:'123', tipo:0});
+//db.Usuario.create({login:'1', senha:'1', tipo:0});
 
 module.exports = route;
 
