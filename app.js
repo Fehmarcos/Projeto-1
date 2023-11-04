@@ -3,10 +3,12 @@ const routes = require('./routers/route');
 const handlebars = require('express-handlebars');
 const express = require('express');
 const app = express();
+const cookie = require('cookie-parser');
 
 app.engine('handlebars', handlebars.engine({defaultLayout:'main'}));
 app.set('view engine','handlebars');
 
+app.use(cookie());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

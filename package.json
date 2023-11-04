@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e js,handlebars app.js"
   },
   "keywords": [],
   "author": "",
@@ -12,8 +13,9 @@
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2",
-    "mongoose": "^7.5.0",
     "pg": "^8.11.3",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "cookie-parser": "latest",
+    "nodemon": "latest"
   }
 }

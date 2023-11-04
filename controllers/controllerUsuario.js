@@ -8,9 +8,12 @@
         async postLogin(req, res) {
             db.Usuario.findAll({ where: { login: req.body.login, senha: req.body.senha } }
             ).then(usuarios => {
-                if (usuarios.length > 0)
-                    res.render('home');
-                else
+                if (usuarios.length > 0){
+                    res.cookie('tipo',usuarios[0].tipo)
+                    res.cookie('login',usuarios[0].login)
+                    res.redirect('/home');
+                    //res.render('home', { usuario: usuarios[9] });
+                }else
                     res.redirect('/');
             }).catch((err) => {
                 console.log(err);
