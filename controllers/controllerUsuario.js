@@ -12,9 +12,7 @@ module.exports = {
       .then((usuarios) => {
         if (usuarios.length > 0) {
           res.cookie("tipo", usuarios[0].tipo);
-          res.cookie("login", usuarios[0].login);
           res.redirect("/home");
-          //res.render('home', { usuario: usuarios[9] });
         } else res.redirect("/");
       })
       .catch((err) => {
@@ -58,6 +56,7 @@ module.exports = {
       tipo: 2,
     })
       .then(() => {
+        res.cookie("tipo", 2);
         res.redirect("/home");
       })
       .catch((err) => {
