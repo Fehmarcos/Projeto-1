@@ -1,0 +1,26 @@
+<table border="1px">
+  <tr>
+    <td> Titulo </td>
+    <td> Descricao </td>
+    <td> Categoria </td>
+    <td> Status </td>
+    <td> Observacao </td>
+    {{#if adm}}
+      <td>Editar</td>
+      <td>Deletar</td>
+    {{/if}}
+  </tr>
+  {{#each tickets}}
+    <tr>
+      <td>{{titulo}}</td>
+      <td>{{descricao}}</td>
+      <td>{{categorium.nome}}</td>
+      <td>{{status}}</td>
+      <td>{{observacao}}</td>
+      {{#if ../adm}}
+        <td><a href="ticketUpdate/{{id}}">Atribuir</a></td>
+        <td><a href="ticketDelete/{{id}}">Deletar</a></td>
+      {{/if}}
+    </tr>
+  {{/each}}
+</table>

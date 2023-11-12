@@ -1,20 +1,22 @@
 <html>
   <head>
-    <title>Sistema de Controle de Tickets</title>​
+    <title>Sistema de Controle de Tickets</title>
   </head>
   <body>
     <center>
-      <h1> Sistema de Controle de Tickets </h1>​
+      <h1> Sistema de Controle de Tickets </h1>
       {{#if adm}}
         <a href="usuarioCreate"> <button> Cadastrar Usuário</button> </a>
-        <a href="usuarioList"> <button> Listar Usuários</button> </a>​
+        <a href="usuarioList"> <button> Listar Usuários</button> </a>
         <a href="categoriaCreate"> <button> Cadastrar Categoria</button> </a>
-        <a href="categoriaList"> <button> Listar Categoria</button> </a>​
+        <a href="categoriaList"> <button> Listar Categoria</button> </a>
+        <a href="ticketList"> <button> Visualizar Tickets</button> </a>
       {{else if tecnico}}
-        <a href=""> <button> Ver Tickets</button> </a>​
+        <a href="ticketList"> <button> Visualizar Tickets</button> </a>
+        <a href="categoriaList"> <button> Listar Categoria</button> </a>
       {{else}}
-        <a href=""> <button> Abrir Ticket</button> </a>
-        <a href=""> <button> Visualizar Ticket</button> </a>​
+        <a href="ticketCreate"> <button> Abrir Ticket</button> </a>
+        <a href="ticketList"> <button> Visualizar Tickets</button> </a>
       {{/if}}
       <a href="/"> <button> Sair </button> </a>
       <br />

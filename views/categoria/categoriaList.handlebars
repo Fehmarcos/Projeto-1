@@ -2,11 +2,17 @@
   <tr>
     <td> Nome </td>
     <td> Descricao </td>
+    {{#if adm}}
+      <td>Deletar</td>
+    {{/if}}
   </tr>
   {{#each categorias}}
     <tr>
       <td>{{nome}}</td>
       <td>{{descricao}}</td>
+      {{#if ../adm}}
+        <td><a href="categoriaDelete/{{id}}">Deletar</a></td>
+      {{/if}}
     </tr>
   {{/each}}
 </table>

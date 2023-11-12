@@ -12,11 +12,11 @@ module.exports = (sequelize, Sequelize) => {
     },
     descricao: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     status: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     observacao: {
       type: Sequelize.STRING,

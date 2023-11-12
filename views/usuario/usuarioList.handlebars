@@ -3,12 +3,18 @@
     <td> Login </td>
     <td> Senha</td>
     <td> Tipo</td>
+    {{#if adm}}
+      <td>Deletar</td>
+    {{/if}}
   </tr>
   {{#each usuarios}}
     <tr>
       <td>{{login}}</td>
       <td>{{senha}}</td>
       <td>{{tipo}}</td>
+      {{#if ../adm}}
+        <td><a href="usuarioDelete/{{id}}">Deletar</a></td>
+      {{/if}}
     </tr>
   {{/each}}
 </table>

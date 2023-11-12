@@ -28,4 +28,11 @@ module.exports = {
         console.log(err);
       });
   },
+  async getDelete(req, res) {
+    await db.Categoria.destroy({ where: { id: req.params.id } })
+      .then(res.redirect("/home"))
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };

@@ -12,6 +12,7 @@ module.exports = {
       .then((usuarios) => {
         if (usuarios.length > 0) {
           res.cookie("tipo", usuarios[0].tipo);
+          res.cookie("usuarioId", usuarios[0].id);
           res.redirect("/home");
         } else res.redirect("/");
       })
@@ -23,17 +24,17 @@ module.exports = {
     res.render("usuario/usuarioCreate");
   },
   async postCreate(req, res) {
-    db.Usuario.create({
+    const usuario = await db.Usuario.create({
       login: req.body.login,
       senha: req.body.senha,
       tipo: req.body.tipo,
-    })
-      .then(() => {
-        res.redirect("/home");
-      })
-      .catch((err) => {
-        console.log(err);
+    });
+    if (req.body.tipo == 1) {
+      const tecnico = await db.Tecnico.create({
+        usuarioId: usuario.id,
       });
+    }
+    res.redirect("/home");
   },
   async getList(req, res) {
     db.Usuario.findAll()
@@ -55,10 +56,18 @@ module.exports = {
       senha: req.body.senha,
       tipo: 2,
     })
-      .then(() => {
+      .then((usuario) => {
         res.cookie("tipo", 2);
+        res.cookie("usuarioId", usuario.dataValues.id);
         res.redirect("/home");
       })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  async getDelete(req, res) {
+    await db.Usuario.destroy({ where: { id: req.params.id } })
+      .then(res.redirect("/home"))
       .catch((err) => {
         console.log(err);
       });

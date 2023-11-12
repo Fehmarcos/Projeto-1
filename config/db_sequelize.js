@@ -15,7 +15,7 @@ db.Ticket = require("../models/relational/ticket.js")(sequelize, Sequelize);
 
 //Relacionamentos
 // Usuario / Tecnico (1x1)
-db.Usuario.hasOne(db.Tecnico);
+db.Usuario.hasOne(db.Tecnico, {onDelete: 'CASCADE'});
 db.Tecnico.belongsTo(db.Usuario);
 //Categoria / Ticket (1xn)
 db.Categoria.hasMany(db.Ticket,);
