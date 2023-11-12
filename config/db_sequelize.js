@@ -14,8 +14,17 @@ db.Categoria = require("../models/relational/categoria.js")(sequelize,Sequelize)
 db.Ticket = require("../models/relational/ticket.js")(sequelize, Sequelize);
 
 //Relacionamentos
+// Usuario / Tecnico (1x1)
 db.Usuario.hasOne(db.Tecnico);
-db.Categoria.hasMany(db.Ticket);
+db.Tecnico.belongsTo(db.Usuario);
+//Categoria / Ticket (1xn)
+db.Categoria.hasMany(db.Ticket,);
+db.Ticket.belongsTo(db.Categoria);
+//Usuario / Ticket (1xn)
 db.Usuario.hasMany(db.Ticket);
+db.Ticket.belongsTo(db.Usuario);
+//Tecnico / Ticket (1xn)
 db.Tecnico.hasMany(db.Ticket);
+db.Ticket.belongsTo(db.Tecnico);
+
 module.exports = db;
