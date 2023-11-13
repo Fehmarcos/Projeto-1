@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.locals["adm"] = req.cookies.tipo == 0;
-  res.locals["tecnico"] = req.cookies.tipo == 1;
+  res.locals["tec"] = req.cookies.tipo == 1;
   next();
 });
 

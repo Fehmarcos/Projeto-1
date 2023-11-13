@@ -9,6 +9,9 @@
       <td>Editar</td>
       <td>Deletar</td>
     {{/if}}
+    {{#if tec}}
+      <td>Documentar</td>
+    {{/if}}
   </tr>
   {{#each tickets}}
     <tr>
@@ -20,6 +23,9 @@
       {{#if ../adm}}
         <td><a href="ticketUpdate/{{id}}">Atribuir</a></td>
         <td><a href="ticketDelete/{{id}}">Deletar</a></td>
+      {{/if}}
+      {{#if ../tec}}
+        <td><a href="ticketUpdate/{{id}}">Documentar</a></td>
       {{/if}}
     </tr>
   {{/each}}

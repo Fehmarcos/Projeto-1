@@ -2,6 +2,7 @@ const { log } = require("console");
 const db = require("../config/db_sequelize");
 const path = require("path");
 const { Op } = require("sequelize");
+const tecnico = require("../models/relational/tecnico");
 
 module.exports = {
   async getCreate(req, res) {
@@ -24,47 +25,40 @@ module.exports = {
       });
   },
   async getList(req, res) {
-    let tickets;
-
     if (req.cookies.tipo == 0) {
       tickets = await db.Ticket.findAll({
         include: [{ model: db.Categoria }],
       });
-    } else {
+    } else if (req.cookies.tipo == 1) {
+      var tecnico = await db.Tecnico.findAll({
+        where: [{ usuarioId: req.cookies.usuarioId }],
+      });
       tickets = await db.Ticket.findAll({
         include: [{ model: db.Categoria }],
         where: {
-          [Op.or]: [
-            { usuarioId: req.cookies.usuarioId },
-            {
-              [Op.and]: [
-                {
-                  tecnicoId: req.cookies.usuarioId,
-                  status: { [Op.notILike]: "pronto" },
-                },
-              ],
-            },
-          ],
+          tecnicoId: tecnico[0].dataValues.id,
+          status: { [Op.notILike]: "pronto" },
         },
+      });
+    } else {
+      tickets = await db.Ticket.findAll({
+        include: [{ model: db.Categoria }],
+        where: { usuarioId: req.cookies.usuarioId },
       });
     }
     res.render("Ticket/ticketList", {
       tickets: tickets.map((user) => user.toJSON()),
     });
   },
-  /* async getCreate(req, res) {
-    var categoria = await db.Categoria.findAll();
-    res.render("ticket/ticketCreate", { categoria });
-  }, */
   async getUpdate(req, res) {
     var categoria = await db.Categoria.findAll();
-    var tecnico = await db.Usuario.findAll({ where: { tipo: 2  } });
+    var tecnico = await db.Tecnico.findAll({ include: [db.Usuario] });
     await db.Ticket.findByPk(req.params.id)
       .then((ticket) =>
         res.render("ticket/ticketUpdate", {
           ticket: ticket.dataValues,
-          categoria,
-          tecnico,
+          categoria: categoria.map((c) => c.toJSON()),
+          tecnico: tecnico.map((t) => t.toJSON()),
         })
       )
       .catch(function (err) {

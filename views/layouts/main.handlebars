@@ -6,21 +6,20 @@
     <center>
       <h1> Sistema de Controle de Tickets </h1>
       {{#if adm}}
-        <a href="usuarioCreate"> <button> Cadastrar Usuário</button> </a>
-        <a href="usuarioList"> <button> Listar Usuários</button> </a>
-        <a href="categoriaCreate"> <button> Cadastrar Categoria</button> </a>
-        <a href="categoriaList"> <button> Listar Categoria</button> </a>
-        <a href="ticketList"> <button> Visualizar Tickets</button> </a>
-      {{else if tecnico}}
-        <a href="ticketList"> <button> Visualizar Tickets</button> </a>
-        <a href="categoriaList"> <button> Listar Categoria</button> </a>
+        <a href="/usuarioCreate"> <button> Cadastrar Usuário</button> </a>
+        <a href="/usuarioList"> <button> Listar Usuários</button> </a>
+        <a href="/categoriaCreate"> <button> Cadastrar Categoria</button> </a>
+        <a href="/categoriaList"> <button> Listar Categoria</button> </a>
+        <a href="/ticketList"> <button> Visualizar Tickets</button> </a>
+      {{else if tec}}
+        <a href="/ticketList"> <button> Visualizar Tickets</button> </a>
+        <a href="/categoriaList"> <button> Listar Categoria</button> </a>
       {{else}}
-        <a href="ticketCreate"> <button> Abrir Ticket</button> </a>
-        <a href="ticketList"> <button> Visualizar Tickets</button> </a>
+        <a href="/ticketCreate"> <button> Abrir Ticket</button> </a>
+        <a href="/ticketList"> <button> Visualizar Tickets</button> </a>
       {{/if}}
       <a href="/"> <button> Sair </button> </a>
-      <br />
-      <br />
+      <br /><br />
       {{{body}}}
     </center>
   </body>
